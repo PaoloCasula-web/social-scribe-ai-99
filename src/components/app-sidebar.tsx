@@ -61,7 +61,7 @@ export function AppSidebar() {
         </div>
 
         {/* Quick Add Button */}
-        <div className="mb-6">
+        <div className="mb-6 px-2">
           <SidebarMenuButton className="w-full bg-primary hover:bg-primary-hover text-primary-foreground shadow-card transition-fast">
             <Plus className="h-4 w-4" />
             <span>New Post</span>
