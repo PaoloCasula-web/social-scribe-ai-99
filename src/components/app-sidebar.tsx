@@ -44,9 +44,11 @@ export function AppSidebar() {
 
   const isActive = (path: string) => currentPath === path;
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
-    isActive 
-      ? "bg-primary text-primary-foreground font-medium shadow-card" 
-      : "hover:bg-muted/50 transition-fast";
+    `flex items-center gap-2 w-full px-3 py-2 rounded-md text-sm font-medium transition-fast ${
+      isActive 
+        ? "bg-primary text-primary-foreground shadow-card" 
+        : "text-foreground hover:bg-muted/50 hover:text-foreground"
+    }`;
 
   return (
     <Sidebar className="border-r bg-card transition-smooth"
@@ -62,10 +64,10 @@ export function AppSidebar() {
 
         {/* Quick Add Button */}
         <div className="mb-6 px-2">
-          <SidebarMenuButton className="w-full bg-primary hover:bg-primary-hover text-primary-foreground shadow-card transition-fast">
+          <button className="w-full bg-primary hover:bg-primary-hover text-primary-foreground shadow-card transition-fast px-3 py-2 rounded-md flex items-center gap-2 text-sm font-medium">
             <Plus className="h-4 w-4" />
             <span>New Post</span>
-          </SidebarMenuButton>
+          </button>
         </div>
 
         {/* Main Navigation */}
@@ -79,10 +81,10 @@ export function AppSidebar() {
                     <NavLink 
                       to={item.url} 
                       end 
-                      className={getNavCls}
+                      className={({ isActive }) => getNavCls({ isActive })}
                     >
-                      <item.icon className="h-4 w-4" />
-                      <span>{item.title}</span>
+                      <item.icon className="h-4 w-4 flex-shrink-0" />
+                      <span className="flex-1">{item.title}</span>
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -101,10 +103,10 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <NavLink 
                       to={item.url} 
-                      className={getNavCls}
+                      className={({ isActive }) => getNavCls({ isActive })}
                     >
-                      <item.icon className="h-4 w-4" />
-                      <span>{item.title}</span>
+                      <item.icon className="h-4 w-4 flex-shrink-0" />
+                      <span className="flex-1">{item.title}</span>
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -122,10 +124,10 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <NavLink 
                       to={item.url} 
-                      className={getNavCls}
+                      className={({ isActive }) => getNavCls({ isActive })}
                     >
-                      <item.icon className="h-4 w-4" />
-                      <span>{item.title}</span>
+                      <item.icon className="h-4 w-4 flex-shrink-0" />
+                      <span className="flex-1">{item.title}</span>
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
